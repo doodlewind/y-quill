@@ -83,7 +83,7 @@ export class QuillBinding {
      * @param {Y.YTextEvent} event
      */
     this._typeObserver = event => {
-      if (event.transaction.origin !== this) {
+      if (event.transaction.origin !== doc.clientID) {
         const eventDelta = event.delta
         // We always explicitly set attributes, otherwise concurrent edits may
         // result in quill assuming that a text insertion shall inherit existing
@@ -117,7 +117,7 @@ export class QuillBinding {
         if (origin !== this) {
           doc.transact(() => {
             type.applyDelta(ops)
-          }, this)
+          }, doc.clientID)
         }
       }
       // always check selection
