@@ -11,10 +11,10 @@
     "url": "https://github.com/sponsors/dmonad"
   },
   "scripts": {
-    "start": "npm run demo",
+    "dev": "vite",
     "demo": "concurrently 'live-server --port=3443 --entry-file=demo/index.html' 'npm run watch'",
     "dist": "rm -rf dist && rollup -c",
-    "test": "rollup -c && node test/test.cjs",
+    "test": "tsc demo/quill-demo.ts && rollup -c && node test/test.cjs",
     "lint": "standard && tsc",
     "watch": "rollup -wc",
     "debug": "concurrently 'live-server --port=3443 --entry-file=test.html' 'npm run watch'",
@@ -49,12 +49,13 @@
     "y-protocols": "^1.0.5"
   },
   "peerDependencies": {
-    "yjs": "^13.0.0",
-    "quill": "^1.3.7"
+    "quill": "^1.3.7",
+    "yjs": "^13.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
+    "@types/quill": "^2.0.9",
     "concurrently": "^4.1.2",
     "jsdom": "^15.2.1",
     "live-server": "^1.2.1",
@@ -62,6 +63,8 @@
     "quill-cursors": "^3.1.0",
     "rollup": "^2.59.0",
     "standard": "^12.0.1",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.0",
     "y-webrtc": "^10.2.0",
     "yjs": "^13.5.18"
   }
